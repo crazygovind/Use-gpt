@@ -2,7 +2,7 @@ const promptInput = document.getElementById("prompt");
 const results = document.getElementById("results");
 
 // Initialize the OpenAI SDK with your API key
-const openai = new OpenAI('a151776f6bmsh94ea1567cbe783dp1d803bjsn21d00779e249');
+const openai = new OpenAI(a151776f6bmsh94ea1567cbe783dp1d803bjsn21d00779e249);
 
 async function callGPTAPI() {
     const message = [
