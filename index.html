@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ask to ChatGPT</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="prompt">
+        <button onclick="callGPTAPI()">Ask</button>
+    </div>
+    <div id="results"></div>
+    <script>
+        const promptInput = document.getElementById("prompt");
+        const results = document.getElementById("results");
+
+        async function callGPTAPI() {
+            const url = 'https://open-ai21.p.rapidapi.com/chat';
+            const options = {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    'X-RapidAPI-Key': 'a151776f6bmsh94ea1567cbe783dp1d803bjsn21d00779e249',
+                    'X-RapidAPI-Host': 'open-ai21.p.rapidapi.com'
+                },
+                body: JSON.stringify({
+                    message: promptInput.value, // Use the user's input from the input field
+                    web_access: false
+                })
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                console.log(result);
+                // Display the chatbot's response inside the results div
+                results.innerText = result.choices[0].message.content;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
